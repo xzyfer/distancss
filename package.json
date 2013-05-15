@@ -1,0 +1,43 @@
+{
+  "author": {
+    "name": "Michael Mifsud",
+    "email": "xzyfer@gmail.com",
+    "url": "http://xzyfer.me"
+  },
+  "name": "distancss",
+  "description": "Automated CSS styleguides generation heavily influences by KSS and *doc forked from node-kss",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/xzyfer/distancss.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "bin": {
+    "distancss": "./bin/distancss"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "dependencies": {
+    "wrench": "1.5.x",
+    "less": "1.x.x",
+    "stylus": "0.32.x",
+    "sass": "0.5.x",
+    "optimist": "0.4.x",
+    "clean-css": "1.0.x",
+    "async": "0.1.x",
+    "handlebars": "~1.0.11",
+    "marked": "~0.2.8"
+  },
+  "devDependencies": {
+    "mocha": "~1.9.0",
+    "grunt-contrib-jshint": "git://github.com/xzyfer/grunt-contrib-jshint",
+    "grunt-release": "~0.3.3",
+    "grunt": "~0.4.1",
+    "grunt-cafe-mocha": "~0.1.3"
+  },
+  "homepage": "http://xzyfer.github.com/distancss"
+}

@@ -1,12 +1,26 @@
 {
-  "author": {
-    "name": "Michael Mifsud",
-    "email": "xzyfer@gmail.com",
-    "url": "http://xzyfer.me"
-  },
   "name": "distancss",
   "description": "Automated CSS styleguides generation heavily influences by KSS and *doc forked from node-kss",
   "version": "0.0.1",
+  "homepage": "https://github.com/xzyfer/distancss",
+  "author": {
+    "name": "xzyfer",
+    "email": "xzyfer@gmail.com",
+    "url": "http://xzyfer.me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/xzyfer/distancss.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xzyfer/distancss/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/xzyfer/distancss/blob/master/LICENSE-MIT"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/xzyfer/distancss.git"

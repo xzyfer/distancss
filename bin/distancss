@@ -58,6 +58,10 @@ argv = require('optimist')
     .alias('c', 'css')
     .describe('c', 'Compile and include a CSS stylesheet')
 
+    .string('p')
+    .alias('p', 'public')
+    .describe('p', 'Public directory containing assets')
+
     .string('m')
     .alias('m', 'mask')
     .describe('m', 'Use a custom mask for detecting stylesheets, e.g. "*.css"')
@@ -97,6 +101,7 @@ if (argv._.length > 1) {
 if (argv.template) {
     options.templateDirectory = path.relative(process.cwd(), argv.template);
 }
+argv.public = argv.public || '/public';
 
 console.log('');
 console.log('Generating your Styleguide!');
@@ -117,8 +122,8 @@ try {
 } catch (e) {}
 
 wrench.copyDirSyncRecursive(
-    options.templateDirectory + '/public',
-    options.destinationDirectory + '/public'
+    options.templateDirectory + argv.public,
+    options.destinationDirectory + argv.public
 );
 
 // Generate the static HTML pages in the next tick, i.e. after the other functions have
@@ -191,7 +196,9 @@ generateStylesheet = function(argv) {
               files: Array.isArray(argv[key]) ? argv[key] : [argv[key]]
             , type: type
         };
-    });
+    }).filter(function(item) { return item; });
+
+    if(!files.length) return;
 
     async.reduce(files, [], function (combined, group, next) {
         if (!group) return next(null, combined);

@@ -79,7 +79,10 @@ if (argv.init) {
     }
 
     console.log('Creating a new styleguide template...');
-    wrench.copyDirSyncRecursive( __dirname + '/../lib/template', argv.init );
+    wrench.copyDirSyncRecursive(__dirname + '/../lib/template', argv.init, {
+        forceDelete: true
+      , inflateSymlinks: true
+    });
     console.log('You can change it as you like, and use it with your styleguide like so:');
     console.log('');
     console.log('distancss [sourcedir] --template "'+argv.init+'"');

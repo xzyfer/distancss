@@ -221,6 +221,11 @@ suite('#traverse', function() {
 					assert.equal(modifiers[2].data.description, 'Color - blue  -  another dash');
 				});
 
+				common.testSection('3.1.8', 'sections-modifiers.less', function(section) {
+					var modifiers = section.data.modifiers;
+					assert.equal(modifiers.length, 5);
+				});
+
 				common.testSection('3.2.1', 'sections-description.less', function(section) {
 					var modifiers = section.data.modifiers;
 					assert.equal(modifiers.length, 0);

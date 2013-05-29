@@ -37,13 +37,13 @@
             {{else}}
                 {{#eachSection rootNumber}}
                     {{#whenDepth 1}}
-                        <h1>{{ header }}</h1>
+                        <h1 id="{{ reference }}">{{ header }}</h1>
                     {{else}}
                         <section class="depth-{{ refDepth }}">
                         {{#whenDepth 2}}
-                            <h3>{{ header }}</h1>
+                            <h3 id="{{ reference }}">{{ header }}</h1>
                         {{else}}
-                            <h4>{{ header }}</h1>
+                            <h4 id="{{ reference }}">{{ header }}</h1>
                         {{/whenDepth}}
                     {{/whenDepth}}
 
@@ -63,7 +63,7 @@
 
                         {{#if modifiers}}
                             {{#eachModifier}}
-                            <h3 >{{name}}</h3>
+                            <h3 id="{{ reference }}">{{name}}</h3>
                             <div class="ui-sample">
                                 <div class="ui-sample__sample">
                                     {{modifierMarkup}}

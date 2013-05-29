@@ -1,7 +1,7 @@
 {
   "name": "distancss",
   "description": "Automated CSS styleguides generation heavily influences by KSS and *doc forked from node-kss",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "http://xzyfer.github.com/distancss",
   "author": {
     "name": "xzyfer",

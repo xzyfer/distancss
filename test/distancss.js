@@ -119,7 +119,9 @@ suite('#traverse', function() {
 
 				test('each comment block in the array should be from .data.body (disregarding whitespace)', function() {
 					var id, section, data = this.data,
-						filteredBody = data.body.replace(/\/\/|\/\*|\*\/|\s/g, '');
+						filteredBody = data.body
+							.replace(/^[ ]*([*](?!\/))?/gm, '')
+							.replace(/\/\/|\/\*+|\*+\/|\s/g, '');
 
 					for (id in data.sections) {
 						section = data.sections[id];
@@ -333,6 +335,42 @@ suite('#traverse', function() {
 					assert.equal(section.data.header, 'Don\'t be the header');
 					assert.equal(section.data.markup, '<h1 class="{$modifiers}">Header</h1>');
 					assert.equal(section.data.modifiers[0].data.name, '.title');
+					done();
+				});
+			});
+
+			test('7.4', function(done) {
+				distancss.traverse(styleDirectory, { markup: true }, function(err, styleguide) {
+					var section = styleguide.section('7.4');
+					var markup = ['<div class="{$modifiers}">', '    <h1>Header</h1>', '</div>'].join('\n');
+
+					assert.equal(section.data.reference, '7.4');
+					assert.equal(section.data.header, 'Should respect whitespace in comment blocks with preprocessor comments');
+					assert.equal(section.data.markup, markup);
+					done();
+				});
+			});
+
+			test('7.5', function(done) {
+				distancss.traverse(styleDirectory, { markup: true }, function(err, styleguide) {
+					var section = styleguide.section('7.5');
+					var markup = ['<div class="{$modifiers}">', '    <h1>Header</h1>', '</div>'].join('\n');
+
+					assert.equal(section.data.reference, '7.5');
+					assert.equal(section.data.header, 'Should respect whitespace in comment blocks with css docblocks');
+					assert.equal(section.data.markup, markup);
+					done();
+				});
+			});
+
+			test('7.6', function(done) {
+				distancss.traverse(styleDirectory, { markup: true }, function(err, styleguide) {
+					var section = styleguide.section('7.6');
+					var markup = ['<div class="{$modifiers}">', '    <h1>Header</h1>', '</div>'].join('\n');
+
+					assert.equal(section.data.reference, '7.6');
+					assert.equal(section.data.header, 'Should respect whitespace in comment blocks with multiline css comments');
+					assert.equal(section.data.markup, markup);
 					done();
 				});
 			});

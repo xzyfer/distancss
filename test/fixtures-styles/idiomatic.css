@@ -1,0 +1,42 @@
+/* ==========================================================================
+   @section 1.0.0
+
+   Stars
+
+   A button suitable for giving stars to someone.
+
+   @Modifier :hover             - Subtle hover highlight.
+   @Modifier .stars-given       - A highlight indicating you've already given a star.
+   @Modifier .stars-given:hover - Subtle hover highlight on top of stars-given styling.
+   @Modifier .disabled          - Dims the button to indicate it cannot be used.
+
+   @endsection
+   ========================================================================== */
+
+a.button.star {
+	background:#ddd;
+}
+a.button.star.stars-given {
+a.button.star.stars-given {
+	background:#ff8;
+}
+a.button.star.disabled {
+	background:#888;
+}
+
+/* ==========================================================================
+   @section 1.1.1
+
+   @Experimental: An alternative signup button styling used in AB Test #195.
+
+   @endsection
+   ========================================================================== */
+
+/* ==========================================================================
+   No @section reference
+
+   @Deprecated: Styling for legacy wikis. We'll drop support for these wikis on
+   July 13, 2007.
+
+   @endsection
+   ========================================================================== */

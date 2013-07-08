@@ -284,7 +284,6 @@ suite('#traverse', function() {
 				}, 'Only works when included at the beginning of a paragraph/header', { multiline: true});
 			});
 			suite('.experimental', function() {
-
 				common.testSection('6.6', 'sections-status.less', function(section) {
 					assert.ok(section.data.experimental);
 				}, 'Still works with vertical line space', { multiline: true});
@@ -309,6 +308,13 @@ suite('#traverse', function() {
 				common.testSection('8', 'section-queries.less', function(section) {
 					assert.equal(section.data.reference, '8');
 				}, 'Sections labelled "X.0" should be equivalent to "X"', { multiline: true });
+			});
+			suite('.idiomatic', function() {
+				common.testSection('1', 'idiomatic.css', function(section) {
+					assert.equal(section.data.reference, '1');
+					assert.equal(section.data.header, 'Stars');
+					assert.equal(section.data.description, 'A button suitable for giving stars to someone.');
+				}, 'Should strip leading whitespace', { multiline: true });
 			});
 		});
 	});

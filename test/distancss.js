@@ -236,6 +236,16 @@ suite('#traverse', function() {
 					assert.equal(modifiers.length, 5);
 				});
 
+				common.testSection('3.1.11', 'sections-modifiers.less', function(section) {
+					var modifiers = section.data.modifiers;
+					assert.equal(modifiers.length, 5);
+				});
+
+				common.testSection('3.1.12', 'sections-modifiers.less', function(section) {
+					var modifiers = section.data.modifiers;
+					assert.equal(modifiers.length, 5);
+				});
+
 				common.testSection('3.2.1', 'sections-description.less', function(section) {
 					var modifiers = section.data.modifiers;
 					assert.equal(modifiers.length, 0);

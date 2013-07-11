@@ -129,6 +129,11 @@ suite('#traverse', function() {
 					}
 				});
 			});
+			suite('.semver', function() {
+				common.testAllSections('semver', 'sections-semver.less', function(section) {
+					assert.equal(section.data.reference, section.data.header);
+				})
+			});
 			suite('.description/.header', function() {
 				common.testSection('3.2.1', 'sections-description.less', function(section) {
 					assert.equal(section.data.header.toUpperCase(), 'ONE LINE, NO MODIFIERS');

@@ -40,7 +40,8 @@
     "clean-css": "1.0.x",
     "async": "0.1.x",
     "handlebars": "1.0.x",
-    "marked": "0.2.x"
+    "marked": "0.2.x",
+    "semver": "~2.0.10"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "0.6.x",

@@ -269,8 +269,17 @@ generatePage = function(styleguide, sections, root, pages, sectionRoots) {
 // Equivalent to generatePage, however will take `styleguide.md` and render it
 // using first Markdown and then Handlebars
 generateIndex = function(styleguide, sections, pages, sectionRoots) {
+    var styleguideIndex;
+
     try {
         console.log('...generating styleguide overview');
+
+        if(fs.existsSync(options.sourceDirectory + '/styleguide.md')) {
+            styleguideIndex = fs.readFileSync(options.sourceDirectory + '/styleguide.md', 'utf8');
+        } else if(fs.existsSync(options.templateDirectory + '/styleguide.md')) {
+            styleguideIndex = fs.readFileSync(options.templateDirectory + '/styleguide.md', 'utf8');
+        }
+
         fs.writeFileSync(options.destinationDirectory + '/index.html',
             template({
                 styleguide: styleguide,
@@ -278,7 +287,7 @@ generateIndex = function(styleguide, sections, pages, sectionRoots) {
                 sections: jsonSections(sections),
                 rootNumber: 0,
                 argv: argv || {},
-                overview: marked(fs.readFileSync(options.sourceDirectory + '/styleguide.md', 'utf8'))
+                overview: marked(styleguideIndex)
             })
         );
     } catch(e) {

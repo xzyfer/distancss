@@ -36,3 +36,16 @@ July 13, 2007.
 
 @endsection
 */
+
+/**
+ * @section 2.1.4
+ *
+ * A button suitable for giving stars to someone.
+ *
+ * @Modifier :hover             - Subtle hover highlight.
+ * @Modifier .stars-given       - A highlight indicating you've already given a star.
+ * @Modifier .stars-given:hover - Subtle hover highlight on top of stars-given styling.
+ * @Modifier .disabled          - Dims the button to indicate it cannot be used.
+ *
+ * @endsection
+ */

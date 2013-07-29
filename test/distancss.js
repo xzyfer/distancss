@@ -290,44 +290,44 @@ suite('#traverse', function() {
 			});
 			suite('.deprecated', function() {
 				common.testSection('6.1', 'sections-status.less', function(section) {
-					assert.ok(section.data.deprecated);
+					assert.ok(section.deprecated());
 				}, 'Still works with vertical line space', { multiline: true});
 
 				common.testSection('6.2', 'sections-status.less', function(section) {
-					assert.ok(section.data.deprecated);
+					assert.ok(section.deprecated());
 				}, 'Works when included in header', { multiline: true});
 
 				common.testSection('6.3', 'sections-status.less', function(section) {
-					assert.ok(section.data.deprecated);
+					assert.ok(section.deprecated());
 				}, 'Works when included at the beginning of a paragraph', { multiline: true});
 
 				common.testSection('6.4', 'sections-status.less', function(section) {
-					assert.ok(!section.data.deprecated);
+					assert.ok(!section.deprecated());
 				}, 'Won\'t work when included in a modifier description', { multiline: true});
 
 				common.testSection('6.5', 'sections-status.less', function(section) {
-					assert.ok(!section.data.deprecated);
+					assert.ok(!section.deprecated());
 				}, 'Only works when included at the beginning of a paragraph/header', { multiline: true});
 			});
 			suite('.experimental', function() {
 				common.testSection('6.6', 'sections-status.less', function(section) {
-					assert.ok(section.data.experimental);
+					assert.ok(section.experimental());
 				}, 'Still works with vertical line space', { multiline: true});
 
 				common.testSection('6.7', 'sections-status.less', function(section) {
-					assert.ok(section.data.experimental);
+					assert.ok(section.experimental());
 				}, 'Works when included in header', { multiline: true});
 
 				common.testSection('6.8', 'sections-status.less', function(section) {
-					assert.ok(section.data.experimental);
+					assert.ok(section.experimental());
 				}, 'Works when included at the beginning of a paragraph', { multiline: true});
 
 				common.testSection('6.9', 'sections-status.less', function(section) {
-					assert.ok(!section.data.experimental);
+					assert.ok(!section.experimental());
 				}, 'Won\'t work when included in a modifier description', { multiline: true});
 
 				common.testSection('6.10', 'sections-status.less', function(section) {
-					assert.ok(!section.data.experimental);
+					assert.ok(!section.experimental());
 				}, 'Only works when included at the beginning of a paragraph/header', { multiline: true});
 			});
 			suite('.reference', function() {
@@ -369,8 +369,8 @@ suite('#traverse', function() {
 					var section = styleguide.section('7.3');
 
 					assert.equal(section.data.reference, '7.3');
-					assert.equal(section.data.header, 'Don\'t be the header');
-					assert.equal(section.data.markup, '<h1 class="{$modifiers}">Header</h1>');
+					assert.equal(section.data.header, '');
+					assert.equal(section.data.markup, '<h1 class="{$modifiers}">Header</h1>\n\nDon\'t be the header');
 					assert.equal(section.data.modifiers[0].data.name, '.title');
 					done();
 				});
@@ -403,9 +403,21 @@ suite('#traverse', function() {
 			test('7.6', function(done) {
 				distancss.traverse(styleDirectory, { markup: true }, function(err, styleguide) {
 					var section = styleguide.section('7.6');
-					var markup = ['<div class="{$modifiers}">', '    <h1>Header</h1>', '</div>'].join('\n');
+					var markup = ['<div class="{$modifiers}">', '','    <h1>Header</h1>', '</div>'].join('\n');
 
 					assert.equal(section.data.reference, '7.6');
+					assert.equal(section.data.header, 'Should respect new lines in markup comment blocks with multiline css comments');
+					assert.equal(section.data.markup, markup);
+					done();
+				});
+			});
+
+			test('7.7', function(done) {
+				distancss.traverse(styleDirectory, { markup: true }, function(err, styleguide) {
+					var section = styleguide.section('7.7');
+					var markup = ['<div class="{$modifiers}">', '    <h1>Header</h1>', '</div>'].join('\n');
+
+					assert.equal(section.data.reference, '7.7');
 					assert.equal(section.data.header, 'Should respect whitespace in comment blocks with multiline css comments');
 					assert.equal(section.data.markup, markup);
 					done();

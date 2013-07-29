@@ -23,7 +23,7 @@ module.exports = function(grunt) {
             all: ['@(lib|test|bin)/{,*/}*.js']
         }
       , mocha: {
-            src: 'test/distancss.js'
+            src: 'test/*.js'
           , options: {
                 ui: 'tdd'
               , reporter: 'spec'

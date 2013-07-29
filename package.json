@@ -41,12 +41,17 @@
     "async": "0.1.x",
     "handlebars": "1.0.x",
     "marked": "0.2.x",
-    "semver": "~2.0.10"
+    "semver": "~2.0.10",
+    "doxy": "~0.0.2"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "0.6.x",
     "grunt-release": "0.3.x",
     "grunt": "0.4.x",
-    "grunt-cafe-mocha": "0.1.x"
+    "grunt-cafe-mocha": "0.1.x",
+    "grunt-jsvalidate": "~0.2.1",
+    "grunt-contrib-watch": "~0.5.1",
+    "grunt-cli": "~0.1.9",
+    "matchdep": "~0.1.2"
   }
 }

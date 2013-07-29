@@ -1,12 +1,29 @@
-/* jshint laxcomma: true*/
 
 module.exports = function(grunt) {
     "use strict";
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json')
-      , cafemocha: {
-            src: 'test/*.js'
+      , watch: {
+            dev: {
+                files: ['@(lib|test|bin)/{,*/}*.js'],
+                tasks: ['default'],
+                options: {
+                    debounceDelay: 250
+                }
+            }
+        }
+      , jshint: {
+            all: ['@(lib|test|bin)/{,*/}*.js']
+          , options: {
+                jshintrc: '.jshintrc'
+           }
+        }
+      , jsvalidate: {
+            all: ['@(lib|test|bin)/{,*/}*.js']
+        }
+      , mocha: {
+            src: 'test/distancss.js'
           , options: {
                 ui: 'tdd'
               , reporter: 'spec'
@@ -14,21 +31,24 @@ module.exports = function(grunt) {
         }
       , release: {
             options: {
-                commitMessage: 'Bump version to <%= version %>'
-            }
-        }
-      , jshint: {
-            all: ['lib/**/*.js', 'bin/**/*.js']
-          , options: {
-                jshintrc: '.jshintrc'
+                bump: true
+              , file: 'package.json'
+              , add: false
+              , commit: true
+              , tag: true
+              , push: true
+              , pushTags: true
+              , npm: true
+              , tagName: '<%= version %>'
+              , commitMessage: 'release <%= version %>'
+              , tagMessage: 'Bump version to <%= version %>'
             }
         }
     });
 
-    grunt.loadNpmTasks('grunt-cafe-mocha');
-    grunt.loadNpmTasks('grunt-release');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
+    require('matchdep').filterAll('grunt-!(cli)').forEach(grunt.loadNpmTasks);
+    grunt.renameTask('cafemocha', 'mocha');
 
-    grunt.registerTask('test', ['cafemocha']);
-    grunt.registerTask('default', ['jshint', 'test']);
+    grunt.registerTask('dev', ['watch:dev']);
+    grunt.registerTask('default', ['jsvalidate', 'jshint', 'mocha']);
 };

@@ -127,7 +127,6 @@ suite('Styleguide', function() {
 						break;
 						default:
 							throw new Error('Unexpected section!');
-						break;
 					}
 				});
 			});

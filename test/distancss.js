@@ -1,4 +1,5 @@
 /*global suite, test, setup, teardown*/
+/* jshint -W099 */
 var distancss = require('../index.js'),
 	path = require('path'),
 	walk = require('../lib/walk.js'),
@@ -132,7 +133,7 @@ suite('#traverse', function() {
 			suite('.semver', function() {
 				common.testAllSections('semver', 'sections-semver.less', function(section) {
 					assert.equal(section.data.reference, section.data.header);
-				})
+				});
 			});
 			suite('.description/.header', function() {
 				common.testSection('3.2.1', 'sections-description.less', function(section) {

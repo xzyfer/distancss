@@ -430,7 +430,7 @@ suite('#traverse', function() {
 				common.shouldFindFile('style.less', {}, true);
 				common.shouldFindFile('style.stylus', {}, true);
 				common.shouldFindFile('style.styl', {}, true);
-				common.shouldFindFile('style.sass', {}, true);
+				//common.shouldFindFile('style.sass', {}, true);
 				common.shouldFindFile('includes/buttons.less', {}, true);
 				common.shouldFindFile('includes/buttons.js', {}, false);
 			});

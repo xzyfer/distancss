@@ -27,7 +27,7 @@ var distancss = require(__dirname + '/../lib/distancss.js'),
  * @type {Object}
  */
 argv = require('optimist')
-    .usage('Usage:\n $0 sourcedir [destdir] --init [directory] --{style,less,sass,stylus} [file]')
+    .usage('Usage:\n $0 sourcedir [destdir] --init [directory] --{style,less,stylus} [file]')
     .check(function(args) {
         if (args._.length < 1 && !args.init) {
             throw new Error('Please provide a source directory');
@@ -50,9 +50,9 @@ argv = require('optimist')
     .alias('y', 'stylus')
     .describe('y', 'Compile and include a Stylus stylesheet')
 
-    .string('S')
-    .alias('S', 'sass')
-    .describe('S', 'Compile and include a SASS stylesheet')
+    // .string('S')
+    // .alias('S', 'sass')
+    // .describe('S', 'Compile and include a SASS stylesheet')
 
     .string('c')
     .alias('c', 'css')
@@ -187,7 +187,7 @@ generateStylesheet = function(argv) {
 
     console.log('...compiling additional stylesheets');
 
-    files = [ false, 'less', 'stylus', 'sass', 'css' ].map(function (type) {
+    files = [ false, 'less', 'stylus', 'css' ].map(function (type) {
         var key = type || 'style';
 
         if (!argv[key]) return;

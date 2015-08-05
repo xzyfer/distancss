@@ -35,7 +35,6 @@
     "wrench": "1.5.x",
     "less": "1.x.x",
     "stylus": "0.33.x",
-    "sass": "0.5.x",
     "optimist": "0.6.x",
     "clean-css": "1.0.x",
     "async": "0.1.x",
